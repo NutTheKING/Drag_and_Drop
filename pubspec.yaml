@@ -1,5 +1,5 @@
 name: drag_and_drop_with_pageview
-description: "A new Flutter project."
+description: "This package build for drag and drop file in the same page and can move to other page with ListView and GridView"
 version: 0.0.1
 homepage: https://github.com/Tinut-Chan/Drag_and_Drop.git
 repository: https://github.com/Tinut-Chan/Drag_and_Drop.git
