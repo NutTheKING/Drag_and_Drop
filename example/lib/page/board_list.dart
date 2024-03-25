@@ -1,4 +1,4 @@
-import 'package:flutter_drag_and_drop_list/page/board_model.dart';
+import 'package:example/page/board_model.dart';
 
 class BoardListModel {
   int count;

@@ -1,5 +1,5 @@
+import 'package:example/page/board_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_drag_and_drop_list/page/board_model.dart';
 
 class BoardCard extends StatelessWidget {
   final BoardItemModel item;

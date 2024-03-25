@@ -1,9 +1,9 @@
-import 'package:drag_and_drop_with_pageview/drag_and_drop_with_pageview.dart';
+import 'package:drag_and_drop_with_pageview/src/board_item.dart';
+import 'package:drag_and_drop_with_pageview/src/boardview.dart';
 import 'package:flutter/material.dart';
 
 import '../animation/shake_animation.dart';
 import '../animation/shake_widget.dart';
-import 'boardview.dart';
 
 typedef OnDropList = void Function(int? listIndex, int? oldListIndex);
 typedef OnTapList = void Function(int? listIndex);

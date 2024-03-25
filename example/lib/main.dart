@@ -1,5 +1,5 @@
+import 'package:example/new_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_drag_and_drop_list/new_page.dart';
 
 void main() {
   runApp(const MyApp());

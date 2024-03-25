@@ -1,5 +1,5 @@
+import 'package:example/page/board_ex.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_drag_and_drop_list/page/board_ex.dart';
 
 class TestingNewHomeWidget extends StatefulWidget {
   const TestingNewHomeWidget({super.key});
@@ -13,7 +13,18 @@ class _TestingNewHomeWidgetState extends State<TestingNewHomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(
+        title: const Text('Home'),
+        actions: [
+          Switch.adaptive(
+            value: isEnable,
+            onChanged: (value) {
+              isEnable = value;
+              setState(() {});
+            },
+          )
+        ],
+      ),
       body: ExampleBoard(
         isEnableButton: isEnable,
       ),
