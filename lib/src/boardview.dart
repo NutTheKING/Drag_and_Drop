@@ -455,7 +455,7 @@ class BoardViewState extends State<BoardView>
     List<Widget> stackWidgets = <Widget>[listWidget];
     bool isInBottomWidget = false;
     if (dy != null) {
-      if (MediaQuery.of(context).size.height - dy! < 80) {
+      if (MediaQuery.of(context).size.height - dy! < 0) {
         isInBottomWidget = true;
       }
     }
@@ -536,7 +536,7 @@ class BoardViewState extends State<BoardView>
                               .boardListController
                               .position
                               .pixels -
-                          5,
+                          10,
                       duration: const Duration(milliseconds: 10),
                       curve: Curves.ease)
                   .whenComplete(() {
@@ -578,7 +578,7 @@ class BoardViewState extends State<BoardView>
                   .findRenderObject() as RenderBox;
               tempBottom = box.size.height;
               if (kDebugMode) {
-                print("tempBot?tom:$tempBottom");
+                debugPrint("tempBot?tom:$tempBottom");
               }
             }
           }
@@ -598,7 +598,7 @@ class BoardViewState extends State<BoardView>
                               .boardListController
                               .position
                               .pixels +
-                          5,
+                          10,
                       duration: const Duration(milliseconds: 10),
                       curve: Curves.ease)
                   .whenComplete(() {
@@ -611,6 +611,7 @@ class BoardViewState extends State<BoardView>
 //                  initialY -= pos;
 //                }
                 isScrolling = false;
+
                 if (topItemY != null) {
                   topItemY = topItemY! + pos;
                 }
