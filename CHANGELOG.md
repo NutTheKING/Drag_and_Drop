@@ -1,3 +1,7 @@
+# 0.1.2
+
+* TODO: Update bottom scroll.
+
 ## 0.1.1
 
 * TODO: Update gif guideline.
