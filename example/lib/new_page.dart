@@ -1,4 +1,4 @@
-import 'package:example/page/board_ex.dart';
+import 'package:example/page/board_example.dart';
 import 'package:flutter/material.dart';
 
 class TestingNewHomeWidget extends StatefulWidget {
@@ -9,7 +9,7 @@ class TestingNewHomeWidget extends StatefulWidget {
 }
 
 class _TestingNewHomeWidgetState extends State<TestingNewHomeWidget> {
-  bool isEnable = false;
+  bool isEnable = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,8 +25,18 @@ class _TestingNewHomeWidgetState extends State<TestingNewHomeWidget> {
           )
         ],
       ),
-      body: ExampleBoard(
-        isEnableButton: isEnable,
+      body: Column(
+        children: [
+          // Container(
+          //   height: 250,
+          //   color: Colors.amber,
+          // ),
+          Expanded(
+            child: ExampleBoard(
+              isEnableButton: isEnable,
+            ),
+          ),
+        ],
       ),
     );
   }

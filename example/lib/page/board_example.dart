@@ -1,6 +1,6 @@
 import 'package:drag_and_drop_with_pageview/drag_and_drop_with_pageview.dart';
 
-import 'package:example/page/board.dart';
+import 'package:example/page/board_card.dart';
 import 'package:example/page/board_list.dart';
 import 'package:example/page/board_model.dart';
 import 'package:flutter/material.dart';
@@ -14,21 +14,25 @@ class ExampleBoard extends StatefulWidget {
 }
 
 class _ExampleBoardState extends State<ExampleBoard> {
-  bool isAutoPlay = false;
   final List<BoardListModel> _listData = [
-    BoardListModel(count: 11, name: 'TODO', items: [
-      BoardItemModel.stub(),
-      BoardItemModel.stub(),
-      BoardItemModel.stub(),
-      BoardItemModel.stub(),
-      BoardItemModel.stub(),
-      BoardItemModel.stub(),
-    ]),
+    BoardListModel(
+      count: 100,
+      name: 'ALL',
+      items: List.generate(
+        114,
+        (index) => BoardItemModel.stub(),
+      ),
+    ),
+    BoardListModel(
+      count: 11,
+      name: 'TODO',
+      items: List.generate(100, (index) => BoardItemModel.stub()),
+    ),
     BoardListModel(count: 4, name: 'IN PROGRESS', items: [
-      BoardItemModel.stub(),
-      BoardItemModel.stub(),
-      BoardItemModel.stub(),
-      BoardItemModel.stub(),
+      // BoardItemModel.stub(),
+      // BoardItemModel.stub(),
+      // BoardItemModel.stub(),
+      // BoardItemModel.stub(),
     ]),
     BoardListModel(count: 6, name: 'REVIEW', items: [
       BoardItemModel.stub(),
@@ -54,6 +58,16 @@ class _ExampleBoardState extends State<ExampleBoard> {
     var list = _listData[oldListIndex!];
     _listData.removeAt(oldListIndex);
     _listData.insert(listIndex!, list);
+  }
+
+  void _onDroppedItem(String? taskTitle, String? newPage) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          '$taskTitle Dropped to $newPage',
+        ),
+      ),
+    );
   }
 
   void _handleCardTap(BoardItemModel item) {
@@ -93,10 +107,7 @@ class _ExampleBoardState extends State<ExampleBoard> {
       return BoardItem(
         draggable: true,
         onStartDragItem:
-            (int? listIndex, int? itemIndex, BoardItemState? state) {
-          isAutoPlay = !isAutoPlay;
-          setState(() {});
-        },
+            (int? listIndex, int? itemIndex, BoardItemState? state) {},
         onDropItem: (int? listIndex, int? itemIndex, int? oldListIndex,
             int? oldItemIndex, BoardItemState? state) {
           //Used to update our local item data
@@ -104,6 +115,7 @@ class _ExampleBoardState extends State<ExampleBoard> {
           _listData[oldListIndex].items.removeAt(oldItemIndex);
           _listData[listIndex!].items.insert(itemIndex!, item);
           debugPrint('===========> Drop Item: ');
+          _onDroppedItem(itemObject.title, _listData[listIndex].name);
         },
         onTapItem:
             (int? listIndex, int? itemIndex, BoardItemState? state) async {},
