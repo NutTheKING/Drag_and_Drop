@@ -62,12 +62,7 @@ class _ExampleBoardState extends State<ExampleBoard> {
 
   void _onDroppedItem(String? taskTitle, String? newPage) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          '$taskTitle Dropped to $newPage',
-        ),
-      ),
-    );
+        SnackBar(content: Text('$taskTitle Dropped to $newPage')));
   }
 
   void _handleCardTap(BoardItemModel item) {
