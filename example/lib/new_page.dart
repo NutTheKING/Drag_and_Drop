@@ -1,4 +1,6 @@
-import 'package:example/page/board_example.dart';
+import 'package:example/slidable/action.dart';
+import 'package:example/slidable/action_pane_motion.dart';
+import 'package:example/slidable/slidable.dart';
 import 'package:flutter/material.dart';
 
 class TestingNewHomeWidget extends StatefulWidget {
@@ -25,18 +27,36 @@ class _TestingNewHomeWidgetState extends State<TestingNewHomeWidget> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          // Container(
-          //   height: 250,
-          //   color: Colors.amber,
-          // ),
-          Expanded(
-            child: ExampleBoard(
-              isEnableButton: isEnable,
+      body: Center(
+        child: Slidable(
+          startActionPane: ActionPane(
+            dismissible: const Icon(Icons.home),
+            motion: const BehindMotion(),
+            children: [
+              SlidableAction(onPressed: (context) {}, icon: Icons.phone),
+              SlidableAction(onPressed: (context) {}, icon: Icons.phone),
+            ],
+          ),
+          endActionPane: ActionPane(
+            dismissible: const Icon(Icons.delete),
+            motion: const BehindMotion(),
+            children: [
+              SlidableAction(onPressed: (context) {}, icon: Icons.edit),
+              SlidableAction(onPressed: (context) {}, icon: Icons.delete),
+            ],
+          ),
+          child: Container(
+            color: Colors.grey,
+            child: const ListTile(
+              title: Text('Tinut Chan'),
+              subtitle: Text(
+                '2020202',
+                style: TextStyle(height: 4),
+              ),
+              leading: CircleAvatar(),
             ),
           ),
-        ],
+        ),
       ),
     );
   }
